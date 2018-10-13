@@ -2,11 +2,20 @@ import red from '@material-ui/core/colors/red'
 import pink from '@material-ui/core/colors/pink'
 import green from '@material-ui/core/colors/green'
 import blue from '@material-ui/core/colors/blue'
+import deepPurple from '@material-ui/core/colors/deepPurple'
+import lightGreen from '@material-ui/core/colors/lightGreen'
 
 const themes = [
   {
     id: 'default',
-    color: blue[500]
+    color: deepPurple[500],
+    source: {
+      palette: {
+        primary: deepPurple,
+        secondary: lightGreen,
+        error: red
+      }
+    }
   },
   {
     id: 'red',

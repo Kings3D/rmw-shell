@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import IconButton from '@material-ui/core/IconButton'
 import { injectIntl, intlShape } from 'react-intl'
 import { GitHubIcon } from 'rmw-shell/lib/components/Icons'
+import LockIcon from '@material-ui/icons/Lock'
 import Activity from 'rmw-shell/lib/containers/Activity'
 import Scrollbar from 'rmw-shell/lib/components/Scrollbar'
 import Typography from '@material-ui/core/Typography'
@@ -84,19 +85,31 @@ const styles = theme => ({
 
 class LandingPage extends Component {
   render () {
-    const { intl, classes, history } = this.props
+    const { intl, classes, history, auth } = this.props
 
     return (
       <Activity
         appBarContent={
+          <div>
           <IconButton
             color='inherit'
-            href='https://github.com/TarikHuber/react-most-wanted'
-            target='_blank'
-            rel='noopener'
+            onClick={() => { history.push('/signin') }}
           >
-            <GitHubIcon />
+            <LockIcon />
           </IconButton>
+          <IconButton
+          color='inherit'
+          href='http://www.3dkings.co.zw'
+          target='_blank'
+          rel='noopener'
+        >
+          {/*<Kings3DIcon />*/}
+          <img
+                src='/3dkingslogo.svg'
+                alt='3D Kings Logo'
+              />
+        </IconButton>
+        </div>
         }>
 
         <Scrollbar>

@@ -16,10 +16,12 @@ import withWidth from '@material-ui/core/withWidth'
 import ChevronLeft from '@material-ui/icons/ChevronLeft'
 import ChevronRight from '@material-ui/icons/ChevronRight'
 import PersonIcon from '@material-ui/icons/Person'
+import BackgroundHeader from '../../../demo/public/background_orig.png'
 
 const styles = theme => ({
   paper: {
-    backgroundColor: theme.palette.primary.dark,
+    //backgroundColor: theme.palette.primary.dark,
+    backgroundImage: 'url('+ BackgroundHeader+')',
     margin: 0,
     padding: 0
   },
@@ -28,6 +30,11 @@ const styles = theme => ({
   },
   icon: {
     color: theme.palette.primary.contrastText
+  },
+  toolbar: {
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    ...theme.mixins.toolbar
   },
   button: {
     // width: 15
@@ -51,6 +58,7 @@ export const DrawerHeader = (props) => {
 
   return (
     <Paper className={classes.paper}>
+      {/*<div className={classes.toolbar} />*/}
       {auth.isAuthorised &&
         <div>
           <List >
@@ -63,7 +71,7 @@ export const DrawerHeader = (props) => {
                   <IconButton onClick={() => { setDrawerOpen(false) }}>
                     <Icon classes={{ root: classes.icon }} >chrome_reader_mode</Icon>
                   </IconButton>
-                  <IconButton className={classes.button} onClick={() => { setDrawerUseMinified(false) }}>
+                  <IconButton className={classes.button} onClick={() => { setDrawerUseMinified(true) }}>
                     <Icon classes={{ root: classes.icon }} >{theme.direction === 'rtl' ? 'chevron_right' : 'chevron_left'}</Icon>
                   </IconButton>
 
@@ -73,17 +81,17 @@ export const DrawerHeader = (props) => {
 
             <ListItem onClick={() => { setDialogIsOpen('auth_menu', !dialogs.auth_menu) }} >
 
-              {!drawer.open && width !== 'sm' && width !== 'xs' && auth.photoURL && <ListItemAvatar>
-                <Avatar src={auth.photoURL} alt='person' style={{ marginLeft: -7, marginTop: 3 }} />
+              {width !== 'sm' && width !== 'xs' && auth.photoURL && <ListItemAvatar>
+                <Avatar src={auth.photoURL} alt='person' style={{ marginLeft: -18, marginTop: 3 }} />
               </ListItemAvatar>
               }
 
-              {!drawer.open && width !== 'sm' && width !== 'xs' && !auth.photoURL && <ListItemAvatar>
-                <Avatar style={{ marginLeft: -7, marginTop: 3 }}> <PersonIcon />  </Avatar>
+              {width !== 'sm' && width !== 'xs' && !auth.photoURL && <ListItemAvatar>
+                <Avatar style={{ marginLeft: -18, marginTop: 3 }}> <PersonIcon />  </Avatar>
               </ListItemAvatar>
               }
 
-              <ListItemText classes={{ primary: classes.listItem, secondary: classes.listItem }} primary={auth.displayName} secondary={auth.email} />
+              {drawer.open && <ListItemText style={{ marginLeft: -8 }} classes={{ primary: classes.listItem, secondary: classes.listItem }} primary={auth.displayName} secondary={auth.email} />}
               {drawer.open && <ListItemSecondaryAction onClick={() => { setDialogIsOpen('auth_menu', !dialogs.auth_menu) }}>
                 <IconButton >
                   <Icon classes={{ root: classes.icon }} >{dialogs.auth_menu ? 'arrow_drop_up' : 'arrow_drop_down'}</Icon>

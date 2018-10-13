@@ -15,6 +15,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
 import { withStyles } from '@material-ui/core/styles'
+import BackgroundHeader from '../../../demo/public/background_orig.png'
 
 const drawerWidth = 240
 
@@ -26,10 +27,11 @@ const styles = theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
+    backgroundImage: 'url('+ BackgroundHeader+')',
+    /*transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
-    })
+    })*/
   },
   menuButton: {
     marginLeft: 12,
@@ -44,7 +46,6 @@ const styles = theme => ({
     flex: 1,
     backgroundColor: theme.palette.background.default
   },
-
   appBarShift: {
     //marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
@@ -116,15 +117,17 @@ class Activity extends React.Component {
         </Helmet>
 
         <AppBar
-          position={width !== 'sm' && width !== 'xs' ? 'absolute' : undefined}
-          className={
+          //position={width !== 'sm' && width !== 'xs' ? 'absolute' : 'sticky'}
+          position='absolute'
+          className={classes.appBar}
+          /*className={
             width !== 'sm' && width !== 'xs'
               ? classNames(classes.appBar, drawer.open && classes.appBarShift)
               : classes.appBar
-          }
+          }*/
         >
           <Toolbar disableGutters={true}>
-            {true && <LinearProgress />}
+            {/*true && <LinearProgress />*/}
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -140,8 +143,12 @@ class Activity extends React.Component {
             <IconButton
               color="inherit"
               aria-label="open drawer"
-              onClick={onBackClick}
-              className={classNames(!smDown && classes.menuButton, !onBackClick && classes.hide)}
+              onClick={drawer.open ? this.handleDrawerClose : this.handleDrawerToggle}
+              className={classNames(
+                !smDown && classes.menuButton, 
+                !onBackClick && smDown && classes.hide,
+                !drawer.open && !smDown && classes.hide
+              )}
             >
               <Icon>chevron_left</Icon>
             </IconButton>
