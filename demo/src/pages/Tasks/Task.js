@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { injectIntl } from 'react-intl';
-import Activity from 'rmw-shell/lib/containers/Activity'
-import { setDialogIsOpen } from 'rmw-shell/lib/store/dialogs/actions'
+import Activity from 'k3d-shell/lib/containers/Activity'
+import { setDialogIsOpen } from 'k3d-shell/lib/store/dialogs/actions'
 import Form from '../../components/Forms/TaskForm';
 import { withRouter } from 'react-router-dom';
 import Icon from '@material-ui/core/Icon';

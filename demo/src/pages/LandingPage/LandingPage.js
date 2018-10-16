@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import IconButton from '@material-ui/core/IconButton'
 import { injectIntl, intlShape } from 'react-intl'
-import { GitHubIcon } from 'rmw-shell/lib/components/Icons'
 import LockIcon from '@material-ui/icons/Lock'
-import Activity from 'rmw-shell/lib/containers/Activity'
-import Scrollbar from 'rmw-shell/lib/components/Scrollbar'
+import Activity from 'k3d-shell/lib/containers/Activity'
+import Scrollbar from 'k3d-shell/lib/components/Scrollbar'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
@@ -115,7 +114,7 @@ class LandingPage extends Component {
         <Scrollbar>
           <div className={classes.root}>
             <Helmet>
-              <title>REACT MOST WANTED</title>
+              <title>3D Kings REACT MOST WANTED</title>
             </Helmet>
             <div className={classes.hero}>
               <div className={classes.content}>

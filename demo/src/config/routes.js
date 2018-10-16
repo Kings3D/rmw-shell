@@ -1,7 +1,7 @@
 import React from 'react'
-import RestrictedRoute from 'rmw-shell/lib/containers/RestrictedRoute'
-import makeLoadable from 'rmw-shell/lib/containers/MyLoadable'
-import makeSlimLoadable from 'rmw-shell/lib/containers/SlimLoadable'
+import RestrictedRoute from 'k3d-shell/lib/containers/RestrictedRoute'
+import makeLoadable from 'k3d-shell/lib/containers/MyLoadable'
+import makeSlimLoadable from 'k3d-shell/lib/containers/SlimLoadable'
 import { Route } from 'react-router-dom'
 
 const MyLoadable = (opts, preloadComponents) => makeLoadable({ ...opts, firebase: () => import('./firebase') }, preloadComponents)

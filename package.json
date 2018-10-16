@@ -1,7 +1,7 @@
 {
-  "name": "rmw-shell",
-  "version": "4.1.1",
-  "description": "rmw-shell React component for 3DKings",
+  "name": "k3d-shell",
+  "version": "4.2.1",
+  "description": "rmw-shell React component fork for 3DKings",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -116,9 +116,9 @@
   "author": "Tarik Huber",
   "homepage": "https://www.react-most-wanted.com/",
   "license": "MIT",
-  "repository": "https://github.com/TarikHuber/rmw-shell",
+  "repository": "https://github.com/Kings3D/rmw-shell",
   "keywords": [
-    "react-most-wanted",
+    "creativity-kings",
     "react",
     "redux",
     "firebase"

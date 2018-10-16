@@ -15,7 +15,7 @@ import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { injectIntl } from 'react-intl'
 import { withStyles } from '@material-ui/core/styles'
-import BackgroundHeader from '../../../demo/public/background_orig.png'
+const BackgroundHeader = '/background.png'
 
 const drawerWidth = 240
 

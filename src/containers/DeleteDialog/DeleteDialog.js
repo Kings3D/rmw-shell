@@ -11,7 +11,7 @@ import withMobileDialog from '@material-ui/core/withMobileDialog'
 import { compose } from 'redux'
 import { connect } from 'react-redux'
 import { injectIntl, intlShape } from 'react-intl'
-import { setSimpleValue } from 'rmw-shell/lib/store/simpleValues/actions'
+import { setSimpleValue } from 'k3d-shell/lib/store/simpleValues/actions'
 
 function Transition(props) {
   return <Slide direction="up" {...props} />

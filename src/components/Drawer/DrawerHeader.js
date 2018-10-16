@@ -16,7 +16,7 @@ import withWidth from '@material-ui/core/withWidth'
 import ChevronLeft from '@material-ui/icons/ChevronLeft'
 import ChevronRight from '@material-ui/icons/ChevronRight'
 import PersonIcon from '@material-ui/icons/Person'
-import BackgroundHeader from '../../../demo/public/background_orig.png'
+const BackgroundHeader = '/background.png'
 
 const styles = theme => ({
   paper: {

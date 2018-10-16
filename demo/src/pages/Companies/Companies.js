@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button'
 import { withRouter } from 'react-router-dom'
 import Avatar from '@material-ui/core/Avatar'
 import { withFirebase } from 'firekit-provider'
-import isGranted from 'rmw-shell/lib/utils/auth'
+import isGranted from 'k3d-shell/lib/utils/auth'
 import { Activity, Scrollbar } from '../../../../src'
 
 class Companies extends Component {

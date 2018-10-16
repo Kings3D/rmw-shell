@@ -12,7 +12,7 @@ module.exports = {
     },
     aliases: {
       // 'rmw-shell': path.resolve('src'),
-      'rmw-shell/lib': path.resolve('src')
+      'k3d-shell/lib': path.resolve('src')
     }
   }
 }
