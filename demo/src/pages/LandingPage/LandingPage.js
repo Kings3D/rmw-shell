@@ -114,7 +114,7 @@ class LandingPage extends Component {
         <Scrollbar>
           <div className={classes.root}>
             <Helmet>
-              <title>3D Kings REACT MOST WANTED</title>
+              <title>3D KINGS RMW</title>
             </Helmet>
             <div className={classes.hero}>
               <div className={classes.content}>
@@ -132,7 +132,7 @@ class LandingPage extends Component {
                     gutterBottom
                     className={classes.title}
                   >
-                    {'REACT MOST WANTED'}
+                    {'3D KINGS RMW'}
                   </Typography>
                   <Typography
                     variant='headline'

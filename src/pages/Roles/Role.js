@@ -85,8 +85,13 @@ export class Role extends Component {
     const { firebaseApp, uid, history } = this.props;
 
     const values = this.state.values
+    const new_uid= values.name.toLowerCase()
 
-    firebaseApp.database().ref(`roles/${uid}`).update(this.clean(values)).then(() => {
+    if (uid !== new_uid){
+      firebaseApp.database().ref(`roles/${uid}`).remove();
+    }
+
+    firebaseApp.database().ref(`roles/${new_uid}`).update(this.clean(values)).then(() => {
       history.push('/roles')
     })
   }

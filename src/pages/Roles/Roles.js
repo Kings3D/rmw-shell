@@ -32,7 +32,7 @@ export class Roles extends Component {
 
     const newRole = firebaseApp.database().ref(`/${path}`).push();
 
-    newRole.update({ name: 'New Role' }).then(() => {
+    newRole.update({ name: 'New Role(one word)' }).then(() => {
       history.push(`/${path}/edit/${newRole.key}/main`);
     })
 

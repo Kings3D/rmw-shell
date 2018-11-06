@@ -33,6 +33,8 @@ export class Users extends Component {
     const { watchList } = this.props;
 
     watchList(path)
+    watchList('companies')
+    watchList('roles')
 
   }
 

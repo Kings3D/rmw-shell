@@ -1,7 +1,7 @@
 {
   "name": "k3d-shell",
-  "version": "4.2.1",
-  "description": "rmw-shell React component fork for 3DKings",
+  "version": "4.2.3",
+  "description": "3DKings React Most Wanted Shell",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [

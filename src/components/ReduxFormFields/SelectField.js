@@ -46,9 +46,9 @@ export default createComponent(
   ({ input: { onChange, value, onBlur, ...inputProps }, onChange: onChangeFromField, ...props }) => ({
     ...mapError(props),
     ...inputProps,
-    value: value,
+    input: { value: value },
     onChange: (selectedValues, name) => {
-      onChange(selectedValues)
+      //onChange(selectedValues)
       if (onChangeFromField) {
         onChangeFromField(selectedValues)
       }

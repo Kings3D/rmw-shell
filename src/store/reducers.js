@@ -9,6 +9,7 @@ import rootReducer from './rootReducer'
 import simpleValues from './simpleValues/reducer'
 import themeSource from './themeSource/reducer'
 import drawer from './drawer/reducer'
+import role from './role/reducer'
 import { combineReducers } from 'redux'
 
 export const appReducers = {
@@ -20,6 +21,7 @@ export const appReducers = {
   persistentValues,
   simpleValues,
   drawer,
+  role,
   themeSource
 }
 

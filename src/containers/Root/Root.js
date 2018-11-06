@@ -18,6 +18,7 @@ import {
   initMessaging,
   watchPath
 } from 'firekit'
+import roleData from '../../store/role/actions'
 import createHistory from 'history/createBrowserHistory'
 import { Router, Route, Switch } from 'react-router-dom'
 import { initializeMessaging } from '../../utils/messaging'
@@ -39,12 +40,13 @@ class Root extends Component {
 
   }
 
-  onAuthStateChanged = (user, firebaseApp) => {
+  onAuthStateChanged = (user, firebaseApp, firebaseAuth) => {
     const {
       clearInitialization,
       watchConnection,
       watchList,
       watchPath,
+      roleData,
       appConfig
     } = this.props;
 
@@ -55,7 +57,7 @@ class Root extends Component {
 
       this.handlePresence(user, firebaseApp);
       setTimeout(() => { watchConnection(firebaseApp); }, 1000);
-
+      
       const userData = {
         displayName: user.displayName ? user.displayName : 'UserName',
         email: user.email ? user.email : ' ',
@@ -85,6 +87,8 @@ class Root extends Component {
 
       watchList(firebaseApp, `user_grants/${user.uid}`);
       watchPath(firebaseApp, `admins/${user.uid}`);
+      watchPath(firebaseApp, `managers/${user.uid}`);
+      watchPath(firebaseApp, `employees/${user.uid}`);
 
       if (appConfig.onAuthStateChanged) {
         try {
@@ -98,6 +102,8 @@ class Root extends Component {
 
       initializeMessaging({ ...this.props, firebaseApp, history, auth: userData }, true)
 
+      roleData(user)
+
       return userData;
 
     } else {
@@ -107,7 +113,7 @@ class Root extends Component {
   }
 
   componentWillMount() {
-    const { watchAuth, appConfig } = this.props;
+    const { watchAuth, appConfig, roleData } = this.props;
 
     appConfig.firebaseLoad().then(({ firebaseApp }) => {
       watchAuth(firebaseApp, (user) => this.onAuthStateChanged(user, firebaseApp))
@@ -170,6 +176,7 @@ export default connect(
   mapStateToProps, {
     watchAuth,
     clearInitialization,
+    roleData,
     watchConnection: initConnection,
     watchList,
     watchPath,
