@@ -24,6 +24,29 @@ export default function isGranted(state, grant) {
   return false
 }
 
+export function isRole(state, rol) {
+  const { auth, paths, role } = state
+
+  const userRole = role.role
+  const isAdmin = paths[`admins/${auth.uid}`]
+
+  if (auth.isAuthorised !== true) {
+    return false
+  }
+
+  if (isAdmin === true) {
+    return true
+  }
+
+  if (userRole !== undefined) {
+    if (userRole === rol) {
+      return userRole.val === true
+    }
+  }
+
+  return false
+}
+
 export function isAnyGranted(state, grants) {
   if (grants !== undefined) {
     for (let grant of grants) {
@@ -33,6 +56,17 @@ export function isAnyGranted(state, grants) {
     }
   }
 
+  return false
+}
+
+export function isAnyRole(state, roles) {
+  if (roles !== undefined) {
+    for (let role of roles) {
+      if (isRole(state, role) === true) {
+        return true
+      }
+    }
+  }
   return false
 }
 

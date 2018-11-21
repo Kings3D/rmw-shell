@@ -11,6 +11,7 @@ import VerticalAlignBottomIcon from '@material-ui/icons/VerticalAlignBottom'
 import AccountBoxIcon from '@material-ui/icons/AccountBox'
 import LockIcon from '@material-ui/icons/Lock'
 
+
 const getMenuItems = (props) => {
   const {
     locale,
@@ -21,6 +22,8 @@ const getMenuItems = (props) => {
     themeSource,
     auth,
     isGranted,
+    isRole,
+    isAnyRole,
     deferredPrompt,
     isAppInstallable,
     isAppInstalled,
@@ -101,13 +104,13 @@ const getMenuItems = (props) => {
     },
     {
       value: '/companies',
-      visible: isGranted('read_companies'),
+      visible: isAnyRole('manager', 'employee'),
       primaryText: intl.formatMessage({ id: 'companies' }),
       leftIcon: <Icon className='material-icons' >business</Icon>
     },
     {
       value: '/tasks',
-      visible: isAuthorised,
+      visible: isRole('admin'),
       primaryText: intl.formatMessage({ id: 'tasks' }),
       leftIcon: <Icon className='material-icons' >list</Icon>
     },
@@ -151,6 +154,12 @@ const getMenuItems = (props) => {
           value: '/roles',
           visible: isGranted('read_roles'),
           primaryText: intl.formatMessage({ id: 'roles' }),
+          leftIcon: <Icon className='material-icons' >account_box</Icon>
+        },
+        {
+          value: '/jobs',
+          visible: isGranted('read_roles'),
+          primaryText: intl.formatMessage({ id: 'jobs' }),
           leftIcon: <Icon className='material-icons' >account_box</Icon>
         }
       ]

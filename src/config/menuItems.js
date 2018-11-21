@@ -152,6 +152,12 @@ const getMenuItems = (props) => {
           visible: isGranted('read_roles'),
           primaryText: intl.formatMessage({ id: 'roles' }),
           leftIcon: <Icon className='material-icons' >account_box</Icon>
+        },
+        {
+          value: '/jobs',
+          visible: isGranted('read_roles'),
+          primaryText: intl.formatMessage({ id: 'jobs' }),
+          leftIcon: <Icon className='material-icons' >account_box</Icon>
         }
       ]
     },

@@ -45,13 +45,6 @@ const activeList = [
   {code: 'false', name: 'InActive'}
 ]
 
-const rolesList = [
-  {code: 'admin', name: 'Admin'},
-  {code: 'manager', name: 'Manager'},
-  {code: 'employee', name: 'Employee'},
-  {code: 'customer', name: 'Customer'}
-]
-
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -75,12 +68,14 @@ export class User extends Component {
     values: {
       active: true,
       company: '',
-      role: 'customer'
+      role: 'customer',
+      job: ''
     },
     roleData: {
       active: false,
       company: '',
-      role: 'customer'
+      role: 'customer',
+      job: ''
     },
     errors: {}
   }
@@ -104,9 +99,7 @@ export class User extends Component {
     const { firebaseApp, uid, history } = this.props;
 
     const roleData = this.state.roleData
-    console.log('\n\n\n\nThe Values: ', roleData)
     if (roleData.role === 'admin') {
-      console.log('\n\n\ninside admin change......\n\n\n\n')
       firebaseApp.database().ref(`/admins/${uid}`).set(true)
     } else {
       firebaseApp.database().ref(`/admins/${uid}`).remove()
@@ -234,6 +227,7 @@ export class User extends Component {
       admins,
       companyList,
       userRoles,
+      userJobs,
       firebaseApp,
       appConfig,
       editType,
@@ -288,11 +282,37 @@ export class User extends Component {
       return {value: role}
     }
 
+    const currStatus = () => {
+      //var coms = companies()
+      var stat = roleData.active
+      var status = activeList.find(obj => {
+        return obj.code === stat
+      })
+      return {value: status}
+    }
+
+    const jobList = () => {
+      var listing = []
+      userJobs.map(row => {
+        let dat = row.val
+        let id = row.key
+        listing.push({code: id, name: dat.name})
+      })  
+      return listing
+    }
+
+    const currJob = () => {
+      const jobs = jobList()
+      const jo = roleData.job
+      var job = jobs.find(obj => {
+        return obj.code === jo
+      })
+      return {value: job}
+    }
+
+    const stat = currStatus()
     const rol = currRole()
-
-    console.log("\n\n\n\nThe Rol: ", rol)
-
-    console.log("\n\n\n\nThe Comp: ", comp)
+    const jo = currJob()
 
     if (admins !== undefined) {
       for (let admin of admins) {
@@ -396,10 +416,20 @@ export class User extends Component {
                 </div>
                 <div>
                 <SelectField
+                  name= 'job'
+                  items={jobList()}
+                  itemToString={item => item ? item.name : ''}
+                  input={jo}
+                  onChange={(e) => { this.handleRoleChange('job', e.code) }}
+                  inputProps={{ label: 'Job', disabled: false, style: { width: 200 } }}
+                />
+                </div>
+                <div>
+                <SelectField
                   name= 'active'
                   items={activeList}
                   itemToString={item => item ? item.name : ''}
-                  input={{value: {code:'active', name:'Active'}}}
+                  input={stat}
                   onChange={(e) => { this.handleRoleChange('active', e.code) }}
                   inputProps={{ label: 'Active',disabled: false, style: { width: 200 } }}
                 />
@@ -487,6 +517,7 @@ const mapStateToProps = (state, ownProps) => {
     photoURL,
     displayName,
     userRoles: getList(state, rolesPath),
+    userJobs: getList(state, 'jobs'),
     companyList: getList(state, 'companies'),
     admins: getList(state, 'admins'),
     user: getPath(state, `users/${uid}`),

@@ -23,6 +23,7 @@ export class UserRoles extends Component {
 
     watchList(userRolesPath)
     watchList('roles')
+    watchList('jobs')
   }
 
   handleRoleToggleChange = (e, isInputChecked, key) => {

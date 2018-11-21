@@ -35,6 +35,7 @@ export class Users extends Component {
     watchList(path)
     watchList('companies')
     watchList('roles')
+    watchList('jobs')
 
   }
 

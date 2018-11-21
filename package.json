@@ -1,6 +1,6 @@
 {
   "name": "k3d-shell",
-  "version": "4.2.3",
+  "version": "4.2.7",
   "description": "3DKings React Most Wanted Shell",
   "main": "lib/index.js",
   "module": "es/index.js",
